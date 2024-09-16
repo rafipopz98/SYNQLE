@@ -50,7 +50,7 @@ const LoginPage = () => {
               Login
             </button>
             <p className="text-sm">
-              Don't have an account?{" "}
+              Don&lsquo;t have an account?{" "}
               <Link
                 href="/signup"
                 className="hover:underline cursor-pointer text-primary"
