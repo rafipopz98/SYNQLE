@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const Collaborate = (props: Props) => {
+const Collaborate = () => {
   return <div>Collaborate</div>;
 };
 

@@ -8,10 +8,8 @@ import ThemeSwitch from "../ui/ThemeSwitch";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
-  const { theme, setTheme, systemTheme } = useTheme();
+const Navbar = () => {
+  const { theme, systemTheme } = useTheme();
   const isAuthUser: boolean = true;
 
   let logoSrc;

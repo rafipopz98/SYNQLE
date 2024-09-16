@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const ResumeBuilder = (props: Props) => {
+const ResumeBuilder = () => {
   return <div>ResumeBuilder</div>;
 };
 

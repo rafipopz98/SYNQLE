@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const FreeResource = (props: Props) => {
+const FreeResource = () => {
   return <div>FreeResource</div>;
 };
 

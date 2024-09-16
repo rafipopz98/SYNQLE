@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const Communicate = (props: Props) => {
+const Communicate = () => {
   return <div>Communicate</div>;
 };
 

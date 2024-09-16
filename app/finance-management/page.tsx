@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const FinanceManagement = (props: Props) => {
+const FinanceManagement = () => {
   return <div>FinanceManagement</div>;
 };
 

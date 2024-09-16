@@ -3,9 +3,7 @@ import React from "react";
 import { toast } from "sonner";
 import Link from "next/link";
 
-type Props = {};
-
-const ForgotPasswordPage = (props: Props) => {
+const ForgotPasswordPage = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Handle form submission, e.g., send email to reset password

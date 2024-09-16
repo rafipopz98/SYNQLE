@@ -3,9 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 
-type Props = {};
-
-const SignUpPage = (props: Props) => {
+const SignUpPage = () => {
   const handleSignUp = () => {
     console.log("Sign up click");
     toast("Account created!", {

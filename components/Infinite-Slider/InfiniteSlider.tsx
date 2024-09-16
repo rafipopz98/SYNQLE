@@ -13,8 +13,6 @@ import {
 import Link from "next/link";
 import { useTheme } from "next-themes";
 
-type Props = {};
-
 const data = [
   {
     id: 1,
@@ -66,7 +64,7 @@ const data = [
   },
 ];
 
-const InfiniteSlider = (props: Props) => {
+const InfiniteSlider = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
   const [color, setColor] = useState<string | null>("#00a9fe");
 
