@@ -2,26 +2,240 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 0 0% 98%; /* white */
+    --foreground: 0 0% 15%; /* Dark gray for text */
+
+    --card: 0 0% 98%; /* Very subtle white for cards */
+    --card-foreground: 0 0% 15%; /* Dark gray for card text */
+
+    --popover: 0 0% 98%; /* Very subtle white for popovers */
+    --popover-foreground: 0 0% 15%; /* Dark gray for popover text */
+
+    --primary: 0 0% 20%; /* Slightly lighter dark gray for primary */
+    --primary-foreground: 0 0% 90%; /* Light gray for primary text */
+
+    --secondary: 0 0% 85%; /* Light gray for secondary elements */
+    --secondary-foreground: 0 0% 20%; /* Dark gray for secondary text */
+
+    --muted: 0 0% 85%; /* Light gray for muted elements */
+    --muted-foreground: 0 0% 30%; /* Medium gray for muted text */
+
+    --accent: 0 0% 85%; /* Light gray for accents */
+    --accent-foreground: 0 0% 20%; /* Dark gray for accent text */
+
+    --destructive: 0 80% 60%; /* Bright red for destructive actions */
+    --destructive-foreground: 0 0% 95%; /* Very light gray for destructive text */
+
+    --border: 0 0% 90%; /* Light gray for borders */
+    --input: 0 0% 90%; /* Light gray for input fields */
+    --ring: 0 0% 15%; /* Dark gray for ring effect */
+
+    --radius: 0.5rem; /* Consistent border radius for elements */
+
+    /* code highlight */
+    --sh-class: #2d5e9d; /* Blue */
+    --sh-identifier: #354150; /* Dark gray */
+    --sh-sign: #8996a3; /* Light gray-blue */
+    --sh-string: #007f7a; /* Teal */
+    --sh-keyword: #e02518; /* Orange */
+    --sh-comment: #a19595; /* Light brown */
+    --sh-jsxliterals: #6266d1; /* Light purple */
+    --sh-property: #e25a1c; /* Orange */
+    --sh-entity: #e25a1c; /* Orange */
+  }
+
+  .dark {
+    --background: 0 0% 1%; /* Dark gray for dark mode background */
+    --foreground: 0 0% 90%; /* Light gray for dark mode text */
+
+    --card: 0 0% 1%;
+    --card-foreground: 0 0% 90%;
+
+    --popover: 0 0% 1%;
+    --popover-foreground: 0 0% 90%;
+
+    --primary: 0 0% 90%; /* Light gray for primary in dark mode */
+    --primary-foreground: 0 0% 10%; /* Very dark gray for primary text */
+
+    --secondary: 0 0% 20%; /* Dark gray for secondary elements in dark mode */
+    --secondary-foreground: 0 0% 90%; /* Light gray for secondary text */
+
+    --muted: 0 0% 20%; /* Dark gray for muted elements in dark mode */
+    --muted-foreground: 0 0% 60%; /* Medium gray for muted text */
+
+    --accent: 0 0% 20%; /* Dark gray for accents in dark mode */
+    --accent-foreground: 0 0% 90%; /* Light gray for accent text */
+
+    --destructive: 0 70% 50%; /* Slightly less bright red for destructive actions in dark mode */
+    --destructive-foreground: 0 0% 90%; /* Light gray for destructive text in dark mode */
+
+    --border: 0 0% 20%; /* Dark gray for borders in dark mode */
+    --input: 0 0% 20%; /* Dark gray for input fields in dark mode */
+    --ring: 0 0% 70%; /* Medium gray for ring effect in dark mode */
+
+    /* code highlight */
+    --sh-class: #4c97f8; /* Lighter blue */
+    --sh-identifier: white; /* White for identifiers */
+    --sh-keyword: #f47067; /* Soft pink */
+    --sh-string: #0fa295; /* Teal */
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground flex flex-col min-h-screen;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.prose .anchor {
+  @apply absolute invisible no-underline;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible;
+}
+
+.prose a {
+  @apply underline transition-all decoration-neutral-400 dark:decoration-neutral-600 underline-offset-2 decoration-[0.1em];
+}
+
+.prose .anchor:after {
+  @apply text-neutral-300 dark:text-neutral-700;
+  content: "#";
+}
+
+.prose *:hover > .anchor {
+  @apply visible;
+}
+
+.prose pre {
+  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+}
+
+.prose code {
+  @apply px-1 py-0.5 rounded-lg;
+}
+
+.prose pre code {
+  @apply p-0;
+  border: initial;
+  line-height: 1.5;
+}
+
+.prose code span {
+  @apply font-medium;
+}
+
+.prose img {
+  /* Don't apply styles to next/image */
+  @apply m-0;
+}
+
+.prose p {
+  @apply my-4 text-neutral-800 dark:text-neutral-200;
+}
+
+.prose h1 {
+  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose h2 {
+  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose h3 {
+  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose h4 {
+  @apply text-lg font-medium tracking-tight mt-6 mb-2;
+}
+
+.prose strong {
+  @apply font-medium;
+}
+
+.prose ul {
+  @apply list-disc pl-6;
+}
+
+.prose ol {
+  @apply list-decimal pl-6;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Remove Safari input shadow on mobile */
+input[type="text"],
+input[type="email"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.title {
+  text-wrap: balance;
+}
+
+.blockquote > #note::before {
+  content: "#";
+  padding: 5px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.custom-shadow {
+  box-shadow: var(--secondary) 0px 0px 0px 1px inset;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.layoutContainer {
+  background-size: 40px 40px;
+  background-image: linear-gradient(
+      to right,
+      var(--primary) 0.01px,
+      transparent 0.3px
+    ),
+    linear-gradient(to bottom, var(--primary) 0.01px, transparent 0.3px);
 }
